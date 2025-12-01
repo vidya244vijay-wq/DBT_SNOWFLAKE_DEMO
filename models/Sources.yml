@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: DEMO  # Source system name
+    database: DEMO      # Optional: database where source is stored
+    schema: DEMO_SCHEMA  # Schema containing the source tables
+    tables:
+      - name: BIKE   # Table name as it exists in the database
+      - name: WEATHER
