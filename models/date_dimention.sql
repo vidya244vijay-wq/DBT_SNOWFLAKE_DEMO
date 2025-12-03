@@ -7,14 +7,7 @@ CASE WHEN DAYNAME(TO_TIMESTAMP(STARTED_AT)) in ('sat','sun')
   THEN 'WEEKEND'
   ELSE 'BUSINESSDAY'
   END AS DAYTYPE,
-CASE WHEN MONTH(TO_TIMESTAMP(STARTED_AT)) in (12,1,2)
-    THEN 'Winter'
-    WHEN MONTH(TO_TIMESTAMP(STARTED_AT)) in (3,4,5)
-    THEN 'Spring'
-    WHEN MONTH(TO_TIMESTAMP(STARTED_AT)) in (6,7,8)
-    THEN 'Summer'
-    ELSE 'Autum'
-    END AS STATION_OF_YEAR
+ {{get_season('STARTED_AT')}} as station_of_yea
 FROM 
 {{ source('DEMO', 'BIKE') }}
 WHERE STARTED_AT != 'started_at'
